@@ -23,6 +23,11 @@ defaults
     timeout http-keep-alive <%= p("ha_proxy.keepalive_timeout").to_i  * 1000 %>ms
     timeout http-request    <%= p("ha_proxy.request_timeout").to_i    * 1000 %>ms
     timeout queue           <%= p("ha_proxy.queue_timeout").to_i      * 1000 %>ms
+    <% if p("ha_proxy.defaults").size > 0 %>
+    <% p("ha_proxy.defaults").each do |default| %>
+    <%= default %>
+    <% end %>
+    <% end %>
 
 <%# HTTP Frontend %>
 
